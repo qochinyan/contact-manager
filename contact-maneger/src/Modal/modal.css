@@ -1,0 +1,78 @@
+.modal{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: .3s ease-in-out;
+}
+.content input::placeholder{
+    color:rgba(6, 23, 61, 0.459);
+}
+.content input{
+    opacity: .9;
+}
+.modal.active{
+    transform: scale(1);
+    background-color: rgba(111, 111, 111, 0.442);
+    font-weight: normal;
+}
+.modalBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 100px 50px 100px;
+    border-radius: 15px 40px;
+    background: linear-gradient(to left,rgba(12, 71, 139, 0.938),rgb(7, 22, 158),rgba(149, 7, 185, 0.795));
+    position: relative;
+}
+.modal input{
+    color: rgba(4, 58, 206, 0.849);
+    font-weight: 600;
+}
+.head{
+    font-size: 19px;
+    color:rgb(255, 255, 255);
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+label{
+    font-size: 18px;
+    font-weight: 500;
+}
+.myInput{
+    margin: 5px 0  20px 0;
+    width: 250px;
+}
+.close{
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 25px;    
+    font-weight: bold;
+    color: white;
+}
+.close:hover{
+    cursor:pointer;
+}
+.but{   
+    margin-top: 20px;
+    width:150px;
+    height: 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 7px;
+    color:rgb(11, 56, 139);
+}
+.but:hover{
+    cursor:pointer;
+    background: linear-gradient(to right,rgb(241, 34, 193),rgb(146, 33, 39));
+    color: rgb(255, 255, 255);
+}

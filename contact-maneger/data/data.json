@@ -1,0 +1,20 @@
+{
+    "list":[
+        {
+            "id":1,
+            "name":"Aren Qochinyan",
+            "email":"arenqochinyan5@gmail.com",
+            "phone":["+37443608042","+37433337733"],
+            "profession":"React Developer",
+            "avatar":"https://e7.pngegg.com/pngimages/36/880/png-clipart-avatar-series-wykop-pl-designer-graphic-artist-designer-face-cartoon.png"
+        },
+        {
+            "id":2,
+            "name":"Aren Qochinyan",
+            "email":"arenqochinyan3@gmail.com",
+            "phone":["+37443608042","12314124"],
+            "profession":"Web Designer",
+            "avatar":"https://e7.pngegg.com/pngimages/36/880/png-clipart-avatar-series-wykop-pl-designer-graphic-artist-designer-face-cartoon.png"
+        }
+    ]
+}
