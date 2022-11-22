@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    color: rgb(17, 96, 166);
+    color: rgb(8, 74, 128);
     font-size: 30px;
 
 }
@@ -36,5 +36,5 @@ span{
 .heading{   
     padding: 0 20px 25px 0;
     display: inline;
-    border-bottom: 2px solid rgba(17, 81, 219, 0.497);
+    border-bottom: 2px solid rgba(12, 69, 154, 0.512);
 }
