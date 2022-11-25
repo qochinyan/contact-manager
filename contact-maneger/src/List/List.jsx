@@ -1,9 +1,8 @@
 import { useState } from "react"
-import { inlineEdit } from "../Settings/config"
 import InlineChange from "../InlineChange/inlineChange"
 import "./List.css"
 
-const List = ({ checkeds, handleDelete, allChecked, handleAllSelect, handleClose, handleCheckSelect, handleInputChange, handleSave, setCurrentId, setQuestActive, id, setId, list, setList, modal, setModal, currentItem, setCurrentItem }) => {
+const List = ({inlineEdit, checkeds, handleDelete, allChecked, handleAllSelect, handleClose, handleCheckSelect, handleInputChange, handleSave, setCurrentId, setQuestActive, id, setId, list, setList, modal, setModal, currentItem, setCurrentItem }) => {
     const handleEditItem = (el) => {
         setModal({
             isOpen: true,

@@ -1,7 +1,6 @@
-import { inlineEdit } from "../Settings/config"
 import "./modal.css"
 
-const Modal = ({ handleInputChange, handleClose, handleSave, modal, setModal, setList, list, setCurrentId, currentItem, setCurrentItem }) => {
+const Modal = ({inlineEdit, handleInputChange, handleClose, handleSave, modal, setModal, setList, list, setCurrentId, currentItem, setCurrentItem }) => {
 
     return (
         <div className={modal.isOpen && !inlineEdit || modal.isOpen && modal.mode === "add" ? 'modal active' : 'modal'} onClick={handleClose}>

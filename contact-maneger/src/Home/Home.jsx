@@ -4,7 +4,7 @@ import Quest from "../Quester/Quest"
 import { useState, useEffect } from "react"
 import Modal from "../Modal/modal"
 
-function Home() {
+function Home({inlineEdit}) {
 
   const [id, setId] = useState(0)
   const [myList, setMyList] = useState([]);
@@ -98,8 +98,8 @@ function Home() {
   return (
     <div className="Home">
       <Quest active={questActive} setQuestActive={SetQuestActive} id={id} setId={setId} setList={setMyList} list={myList} />
-      <List checkeds={selectedContacts} handleDelete={handleDelete} allChecked={allChecked} handleAllSelect={handleAllSelect} handleCheckSelect={handleCheckSelect} handleClose={handleClose} handleInputChange={handleInputChange} handleSave={handleSave} currentItem={currentItem} setCurrentItem={setCurrentItem} setCurrentId={setCurrentId} modal={modal} setModal={setModal} active={questActive} setQuestActive={SetQuestActive} list={myList} id={id} setId={setId} setList={setMyList} />
-      <Modal handleClose={handleClose} handleInputChange={handleInputChange} handleSave={handleSave} list={myList} setList={setMyList} currentItem={currentItem} setCurrentItem={setCurrentItem} modal={modal} setModal={setModal} currentId={currentId} setCurrentId={setCurrentId} />
+      <List inlineEdit={inlineEdit} checkeds={selectedContacts} handleDelete={handleDelete} allChecked={allChecked} handleAllSelect={handleAllSelect} handleCheckSelect={handleCheckSelect} handleClose={handleClose} handleInputChange={handleInputChange} handleSave={handleSave} currentItem={currentItem} setCurrentItem={setCurrentItem} setCurrentId={setCurrentId} modal={modal} setModal={setModal} active={questActive} setQuestActive={SetQuestActive} list={myList} id={id} setId={setId} setList={setMyList} />
+      <Modal inlineEdit={inlineEdit} handleClose={handleClose} handleInputChange={handleInputChange} handleSave={handleSave} list={myList} setList={setMyList} currentItem={currentItem} setCurrentItem={setCurrentItem} modal={modal} setModal={setModal} currentId={currentId} setCurrentId={setCurrentId} />
     </div>
   );
 }
