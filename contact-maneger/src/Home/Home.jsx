@@ -1,10 +1,12 @@
+import { useState, useEffect } from "react"
+import axios from "axios"
+
 import './Home.css';
 import List from "../List/List";
 import Quest from "../Quester/Quest"
-import { useState, useEffect } from "react"
 import Modal from "../Modal/modal"
 
-function Home({inlineEdit}) {
+function Home({ inlineEdit }) {
 
   const [id, setId] = useState(0)
   const [myList, setMyList] = useState([]);
@@ -17,12 +19,11 @@ function Home({inlineEdit}) {
   //fetches json-server
   const url = "http://localhost:3010/list"
   useEffect(() => {
-    const getList = async () => {
-      await fetch(url)
-        .then((res) => res.json())
-        .then((data) => setMyList(data))
+    const getList = () => {
+      axios.get(url)
+        .then((data) => setMyList(data.data))
     }
-    (function () { getList() })()
+    getList()
   }, [])
 
 
@@ -39,6 +40,7 @@ function Home({inlineEdit}) {
       newList[itemIndex] = currentItem;
     } else {
       newList.push(currentItem)
+      axios.post(url, currentItem)
     }
     setMyList(newList)
     setModal({
@@ -86,13 +88,19 @@ function Home({inlineEdit}) {
     setAllChecked(evt.target.checked)
   }
   const handleDelete = () => {
-    if (allChecked) {
-      setMyList([])
-    } else {
-      let updatedList = [...myList]
-      updatedList = updatedList.filter((el, i) => !Object.values(selectedContacts).includes(el.id))
-      setMyList(updatedList)
+
+    let updatedList = [...myList]
+    let currId;
+    for (let i = 0; i < updatedList.length; i++) {
+      if (Object.values(selectedContacts).includes(updatedList[i].id)) {
+        currId = updatedList[i].id
+        updatedList.splice(i, 1)
+        axios.delete(`${url}/${currId}`)
+      } 
     }
+    setMyList(updatedList)
+
+
 
   }
   return (

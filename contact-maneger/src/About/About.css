@@ -4,15 +4,15 @@
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(22, 155, 189);
+    background-color: rgb(48, 170, 226);
 }
 .aboutText{
-    height: 42%;
+    height: 38%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    color: rgb(18, 94, 156);
+    color: rgb(16, 81, 180);
     font-size: 30px;
 
 }
@@ -22,20 +22,21 @@
 }
 .aboutImg img:hover{
     width: 850px;
-    padding-left:0px;
     opacity: .8;    
+    padding: -20px 0;
+    background: radial-gradient(#1c56d415, #ff769800);
 }
 span{
     font-size: 14px;
-    color: rgba(10, 90, 122, 0.567);
+    color: rgba(255, 255, 255, 0.623);
 }
 .textAbout{
     font-size:20px;
-    color: rgb(73, 108, 169);
+    color: rgb(255, 255, 255);
 
 }
 .heading{   
     padding: 0 20px 25px 0;
     display: inline;
-    border-bottom: 2px solid rgba(12, 69, 154, 0.512);
+
 }
