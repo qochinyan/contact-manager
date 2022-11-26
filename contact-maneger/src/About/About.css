@@ -4,6 +4,7 @@
     justify-content: center;
     width: 100vw;
     height: 100vh;
+    background-color: rgb(22, 155, 189);
 }
 .aboutText{
     height: 42%;
@@ -11,7 +12,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    color: rgb(8, 74, 128);
+    color: rgb(18, 94, 156);
     font-size: 30px;
 
 }
