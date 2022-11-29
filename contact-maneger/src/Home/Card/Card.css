@@ -1,0 +1,8 @@
+.cardItem{
+    width: 10vw;
+    background-color: rgba(62, 100, 224, 0.685);
+    height:20vh;
+    border-radius: 20px;
+    padding: 10px 5px;
+    margin :7px;
+}

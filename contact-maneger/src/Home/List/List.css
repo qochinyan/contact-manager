@@ -22,8 +22,8 @@
 }
 .list{
     font-weight:600;
-    border-radius:5px 15px 0 0 ;
     background-color: #fff;
+    border-radius: 10px 5px 10px 5px;
 }
 table{
     border-collapse: collapse;
@@ -144,4 +144,18 @@ tr:last-child{
 
 .checkedTr{
     background-color: rgb(212, 255, 131);
+}
+
+/* cards style */
+
+.containerCardView{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 40vw;
+    min-width: 0px;
+    padding: 10px 10px;
+    border-radius: 10px 5px 10px 5px;
+    background: linear-gradient(to bottom right ,rgb(51, 75, 95),rgb(8, 74, 128));
 }
