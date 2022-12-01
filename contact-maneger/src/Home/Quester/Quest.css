@@ -12,6 +12,7 @@
 }
 .active{
     transform: scale(1);
+    z-index: 99;
 }
 .box1{
     padding: 60px 80px;

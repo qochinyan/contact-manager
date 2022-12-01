@@ -43,9 +43,10 @@ const List = ({
       profession: "",
     });
     setModal({ isOpen: true, mode: "add" });
-    console.log(list);
   };
-  console.log("is "+ cardView);
+  const handleSelect = (evt)=>{
+    console.log(evt.target.value)
+  }
   return (
     <div className="container">
       <div className="box">
@@ -53,6 +54,17 @@ const List = ({
           <button onClick={handleDelete} className="delSelBut">
             Delete
           </button>
+          <div className="selectSearch">
+            <select onChange={handleSelect} className="propSelect" name="" id="">
+              <option value="name">Select Property(Name)</option>
+              <option value="name" >Name</option>
+              <option value="phone" >Phone</option>
+              <option value="email" >Email</option>
+              <option value="profession" >Profession</option>
+            </select>
+            <input type="text" className="searchInput" autofocus  placeholder="Input Text Here"/>
+            <button className="searchBut" >Search</button>
+          </div>
           <button onClick={handleAdd} className="addBut">
             Add
           </button>
@@ -230,7 +242,7 @@ const List = ({
           </table>
           ) : (
           <div className="containerCardView">
-            {list.map((el)=><Card el={el}/>)
+            {list.map((el)=><Card setId={setId} setQuestActive={setQuestActive} handleEditItem={handleEditItem} el={el}/>)
             }
           </div>
           )}
