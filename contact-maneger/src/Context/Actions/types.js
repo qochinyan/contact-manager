@@ -1,0 +1,2 @@
+export const SET_INLINE_EDIT = "SET_INLINE_EDIT";
+export const SET_MODAL_EDIT = "SET_MODAL_EDIT";

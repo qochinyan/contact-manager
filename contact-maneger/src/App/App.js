@@ -14,7 +14,6 @@ import { useState } from "react";
 
 function App() {
   ///settings
-  const [inlineEdit, setInlineEdit] = useState(false);
   const [cardView, setCardView] = useState(true);
   return (
     <BrowserRouter>
@@ -23,18 +22,13 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home cardView={cardView} inlineEdit={inlineEdit} />}
+            element={<Home cardView={cardView} />}
           />
           <Route path="/about" element={<About />} />
           <Route
             path="/settings"
             element={
-              <Settings
-                cardView={cardView}
-                setCardView={setCardView}
-                inlineEdit={inlineEdit}
-                setInlineEdit={setInlineEdit}
-              />
+              <Settings/>
             }
           />
         </Routes>

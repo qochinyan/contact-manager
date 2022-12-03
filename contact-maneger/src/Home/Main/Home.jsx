@@ -5,8 +5,9 @@ import "./Home.css";
 import List from "../List/List";
 import Quest from "../Quester/Quest";
 import Modal from "../Modal/modal";
+import { useSettings } from "../../Context/Context"
 
-function Home({ inlineEdit ,cardView}) {
+function Home({cardView}) {
   const [id, setId] = useState(0);
   const [myList, setMyList] = useState([]);
   const [questActive, SetQuestActive] = useState(false);
@@ -15,6 +16,10 @@ function Home({ inlineEdit ,cardView}) {
   const [currentItem, setCurrentItem] = useState({});
   const [selectedContacts, setSelectedContacts] = useState({});
   const [allChecked, setAllChecked] = useState(false);
+  // context datas
+  const settings = useSettings()
+  const {inlineEdit} = settings
+  console.log(inlineEdit);
   //fetches json-server
   const url = "http://localhost:3010/list";
   useEffect(() => {
@@ -106,7 +111,7 @@ function Home({ inlineEdit ,cardView}) {
         list={myList}
       />
       <List
-        cardView = {cardView}
+        cardView={cardView}
         inlineEdit={inlineEdit}
         checkeds={selectedContacts}
         handleDelete={handleDelete}

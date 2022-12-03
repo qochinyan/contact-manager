@@ -19,7 +19,10 @@
     color: rgb(78, 78, 78);
 }
 .cardNumber{
-    color: rgb(0, 153, 46);
+    color: rgb(214, 224, 255);
+    background: rgb(0, 97, 177);
+    padding: 0 1%;
+    border-radius: 5px;
 }
 .cardEmail{
     font-size: 14px;
