@@ -6,17 +6,17 @@ import Settings from "../Settings/Settings";
 import {
   BrowserRouter,
   Route,
-  Routes,
-  NavLink,
-  Switch,
+  Routes
 } from "react-router-dom";
 import { useState } from "react";
+import { AppProvider } from "../Context/Context";
 
 function App() {
   ///settings
-  const [cardView, setCardView] = useState(true);
+  const [cardView, setCardView] = useState(false);
   return (
-    <BrowserRouter>
+    <AppProvider>
+      <BrowserRouter>
       <div className="App">
         <Header />
         <Routes>
@@ -34,6 +34,8 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
+    </AppProvider>
+    
   );
 }
 

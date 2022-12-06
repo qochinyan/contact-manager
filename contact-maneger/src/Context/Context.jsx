@@ -6,7 +6,7 @@ const AppDispatchContext = createContext(null);
 
 const initialSettings = {
   inlineEdit: false,
-  cardView: true
+  cardView: true,
 };
 
 export const AppProvider = ({ children }) => {
@@ -21,24 +21,23 @@ export const AppProvider = ({ children }) => {
 };
 
 function appReducer(settings, action) {
-  console.log(action.payload);
   switch (action.type) {
     //action.payload
     case SET_INLINE_EDIT:
       return {
         ...settings,
-        inlineEdit: true
+        inlineEdit: true,
       };
     case SET_MODAL_EDIT: {
       return {
         ...settings,
-        inlineEdit: false
+        inlineEdit: false,
       };
     }
 
     default:
       return {
-        ...settings
+        ...settings,
       };
   }
 }

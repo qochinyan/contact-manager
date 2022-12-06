@@ -1,6 +1,6 @@
 import { useSettings, useSettingsDispatch } from "../Context/Context";
 import { setInlineEdit, setModalEdit } from "../Context/Actions/actions";
-
+import "./Settings.css";
 const Settings = () => {
   const settings = useSettings();
   const dispatch = useSettingsDispatch();
@@ -16,13 +16,13 @@ const Settings = () => {
   };
 
   return (
-    <div className='settings-container'>
+    <div className="settings-container">
       <h2>Edit</h2>
       <div>
         <label>Inline</label>
         <input
-          type='radio'
-          name='inlineEdit'
+          type="radio"
+          name="inlineEdit"
           onChange={handleInlineRadioChange}
           checked={settings.inlineEdit}
         />
@@ -30,8 +30,8 @@ const Settings = () => {
       <div>
         <label>Modal</label>
         <input
-          type='radio'
-          name='inlineEdit'
+          type="radio"
+          name="inlineEdit"
           onChange={handleModalRadioChange}
           checked={!settings.inlineEdit}
         />

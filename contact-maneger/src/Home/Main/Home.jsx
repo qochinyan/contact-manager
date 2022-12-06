@@ -19,7 +19,6 @@ function Home({cardView}) {
   // context datas
   const settings = useSettings()
   const {inlineEdit} = settings
-  console.log(inlineEdit);
   //fetches json-server
   const url = "http://localhost:3010/list";
   useEffect(() => {
