@@ -14,27 +14,34 @@ import "./Settings.css";
 const Settings = () => {
   const settings = useSettings();
   const dispatch = useSettingsDispatch();
-  const [nonSavedSettings, setNonSavedSettings] = React.useState({settings});
+  const [nonSavedSettings, setNonSavedSettings] = React.useState(settings);
   const handleInlineRadioChange = () => {
     //payload can be empty
-    setNonSavedSettings({...nonSavedSettings,inlineEdit:true})
+    setNonSavedSettings({ ...nonSavedSettings, inlineEdit: true });
   };
 
   const handleModalRadioChange = () => {
-    setNonSavedSettings({...nonSavedSettings,inlineEdit:false})
+    setNonSavedSettings({ ...nonSavedSettings, inlineEdit: false });
   };
-  const handleCardVeiwChange = () => {};
-  const handleListVeiwChange = () => {};
-  const handleSearchYes = () => {};
+  const handleCardVeiwChange = () => {
+    setNonSavedSettings({ ...nonSavedSettings, cardView: true });
+  };
+  const handleListVeiwChange = () => {
+    setNonSavedSettings({ ...nonSavedSettings, cardView: false });
+  };
+  const handleSearchYes = () => {
+    setNonSavedSettings({ ...nonSavedSettings, search: true });
+  };
 
-  const handleSearchNo = () => {};
+  const handleSearchNo = () => {
+    setNonSavedSettings({ ...nonSavedSettings, search: false });
+  };
 
-  const resetSettings =()=>{
-    dispatch(resetToDefault)
-  }
+  const resetSettings = () => {
+    dispatch(resetToDefault);
+  };
   const handleSaveSettings = () => {
-    console.log("action.payload")
-    dispatch(({ type: "HANDLE_SAVE", payload: {...nonSavedSettings} }));
+    dispatch({ type: "HANDLE_SAVE", payload: { ...nonSavedSettings } });
   };
   return (
     <div className="settings-container">
@@ -70,7 +77,7 @@ const Settings = () => {
                 type="radio"
                 name="view"
                 onChange={handleCardVeiwChange}
-                checked={nonSavedSettings.cardVeiw}
+                checked={nonSavedSettings.cardView}
               />
             </div>
             <div>
@@ -79,7 +86,7 @@ const Settings = () => {
                 type="radio"
                 name="view"
                 onChange={handleListVeiwChange}
-                checked={!nonSavedSettings.cardVeiw}
+                checked={!nonSavedSettings.cardView}
               />
             </div>
           </div>
@@ -105,10 +112,7 @@ const Settings = () => {
             </div>
           </div>
         </div>
-        <button onClick={resetSettings} className="resetBut" >
-          Reset
-        </button>
-        <button className="resetBut cancel">Cancel</button>
+        <button onClick={resetSettings} className="resetBut cancel">Cancel</button>
         <button onClick={handleSaveSettings} className="resetBut save">
           Save
         </button>

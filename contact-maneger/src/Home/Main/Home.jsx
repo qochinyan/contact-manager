@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+// context
+import { useSettings } from "../../Context/Context";
 
 import "./Home.css";
+// comps
 import List from "../List/List";
 import Quest from "../Quester/Quest";
 import Modal from "../Modal/modal";
-import { useSettings } from "../../Context/Context"
 
-function Home({cardView}) {
+function Home() {
   const [id, setId] = useState(0);
   const [myList, setMyList] = useState([]);
   const [questActive, SetQuestActive] = useState(false);
@@ -17,8 +19,8 @@ function Home({cardView}) {
   const [selectedContacts, setSelectedContacts] = useState({});
   const [allChecked, setAllChecked] = useState(false);
   // context datas
-  const settings = useSettings()
-  const {inlineEdit} = settings
+  const settings = useSettings();
+  const { inlineEdit, cardView, search } = settings;
   //fetches json-server
   const url = "http://localhost:3010/list";
   useEffect(() => {
@@ -110,7 +112,8 @@ function Home({cardView}) {
         list={myList}
       />
       <List
-        cardView={cardView}
+      cardView={cardView}
+        search={search}
         inlineEdit={inlineEdit}
         checkeds={selectedContacts}
         handleDelete={handleDelete}

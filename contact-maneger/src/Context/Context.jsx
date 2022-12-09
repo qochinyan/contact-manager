@@ -5,7 +5,7 @@ import {
   RESET_TO_DEFAULT,
   SET_SEARCH_ON,
   SET_SEARCH_OFF,
-  HANDLE_SAVE
+  HANDLE_SAVE,
 } from "./Actions/types";
 
 const AppContext = createContext(null);
@@ -14,7 +14,7 @@ const AppDispatchContext = createContext(null);
 const initialSettings = {
   inlineEdit: false,
   cardView: false,
-  search:false
+  search: false,
 };
 
 export const AppProvider = ({ children }) => {
@@ -31,33 +31,23 @@ export const AppProvider = ({ children }) => {
 function appReducer(settings, action) {
   switch (action.type) {
     //action.payload
-    case SET_INLINE_EDIT:
-      return {
-        ...settings,
-        inlineEdit: true,
-      };
-    case SET_MODAL_EDIT:
-      return {
-        ...settings,
-        inlineEdit: false
-      };
-
     case RESET_TO_DEFAULT:
       return {
         ...initialSettings,
       };
-    case SET_SEARCH_ON:
-      return {};
-    case SET_SEARCH_OFF:
-      return {};
+    // case HANDLE_CANCEL:
+    //   return{
+    //     ...settings
+    //   };    default is replcaing its
     case HANDLE_SAVE:
-      const obj = {...action.payload.settings}
-          return{
-            obj
-          };
+      const obj = { ...action.payload};
+      console.log(obj);
+      return {
+        ...obj,
+      };
     default:
       return {
-        ...settings
+        ...settings,
       };
   }
 }

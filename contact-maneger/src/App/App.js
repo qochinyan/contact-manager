@@ -12,8 +12,6 @@ import { useState } from "react";
 import { AppProvider } from "../Context/Context";
 
 function App() {
-  ///settings
-  const [cardView, setCardView] = useState(false);
   return (
     <AppProvider>
       <BrowserRouter>
@@ -22,7 +20,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home cardView={cardView} />}
+            element={<Home/>}
           />
           <Route path="/about" element={<About />} />
           <Route
