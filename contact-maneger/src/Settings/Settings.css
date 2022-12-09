@@ -2,6 +2,43 @@
     background-color: rgb(9, 93, 172);
     height: 100vh;
     width: 100vw;
-    padding: 20% 0 0 10%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.settingsBlocks{
+    border-top:  1px solid white;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    padding: 40px 0 ;
+    margin-bottom: 30px;
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.setscont h1{
+    width: 180px;
+    font-size: 38px;
+    margin: 0 0 30px 0;
+    border-right: 4px solid rgb(255, 255, 255);
+}
+.resetBut{
+    font-family: "Montserrat",sans-serif;
+    color:rgb(0, 72, 255);
+    letter-spacing: 1px;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 7px 20px;
+    cursor: pointer;
+}
+.setscont h2{
+    font-size: 27px;
+    margin: 0 0 10px 0;
+}
+.save{
+    background-color: rgb(244, 0, 98);
+    box-sizing: border-box;
     color: white;
 }
