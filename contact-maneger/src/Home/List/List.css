@@ -25,6 +25,7 @@
 .list {
   font-weight: 600;
   max-height: 70vh;
+  overflow: hidden;
   overflow-y: scroll;
   background-color: #fff;
   border-radius: 10px 5px 10px 5px;
