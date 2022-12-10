@@ -33,17 +33,15 @@ function appReducer(settings, action) {
     //action.payload
     case RESET_TO_DEFAULT:
       return {
-        ...initialSettings,
+        ...settings
       };
     // case HANDLE_CANCEL:
     //   return{
     //     ...settings
     //   };    default is replcaing its
     case HANDLE_SAVE:
-      const obj = { ...action.payload};
-      console.log(obj);
       return {
-        ...obj,
+        ...action.payload,
       };
     default:
       return {

@@ -55,7 +55,7 @@ const List = ({
   };
   // react dnd
   const moveCard = useCallback((dragIndex, hoverIndex) => {
-    setCards((prevCards) =>
+    setList((prevCards) =>
       update(prevCards, {
         $splice: [
           [dragIndex, 1],
@@ -134,7 +134,7 @@ const List = ({
                       contact={currentItem}
                     />
                   ) : !allChecked ? (
-                    <ListItem moveCard={moveCard} el={el} index={i} checkeds={checkeds} handleCheckSelect={handleCheckSelect} handleEditItem={handleEditItem} setQuestActive={setQuestActive} setId={setId} checked={allChecked}/>
+                    <ListItem  moveCard={moveCard} el={el} index={i} checkeds={checkeds} handleCheckSelect={handleCheckSelect} handleEditItem={handleEditItem} setQuestActive={setQuestActive} setId={setId} checked={allChecked}/>
                   ) : (
                     <ListItem moveCard={moveCard} el={el} index={i} checkeds={checkeds} handleCheckSelect={handleCheckSelect} handleEditItem={handleEditItem} setQuestActive={setQuestActive} setId={setId} checked={allChecked}/>
                   );

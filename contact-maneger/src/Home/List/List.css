@@ -170,12 +170,10 @@ tr:last-child {
   justify-content: center;
   max-width: 50vw;
   min-width: 0px;
-  max-height: 70vh;
   padding: 10px 10px;
   border-radius: 10px 5px 10px 5px;
   background: rgb(16, 140, 255);
-  overflow-y: scroll;
-  overflow-x: auto;
+  
 }
 /* select */
 .propSelect  {

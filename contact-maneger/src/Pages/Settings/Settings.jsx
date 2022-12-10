@@ -1,16 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { useSettings, useSettingsDispatch } from "../Context/Context";
-import {
-  setInlineEdit,
-  setModalEdit,
-  setSearchOff,
-  setSearchOn,
-  resetToDefault,
-  setCardVeiw,
-  setListVeiw,
-} from "../Context/Actions/actions";
+import { useSettings, useSettingsDispatch } from "../../Context/Context";
+import { resetToDefault } from "../../Context/Actions/actions";
 import "./Settings.css";
+import { HANDLE_SAVE } from "../../Context/Actions/types";
 const Settings = () => {
   const settings = useSettings();
   const dispatch = useSettingsDispatch();
@@ -41,7 +34,8 @@ const Settings = () => {
     dispatch(resetToDefault);
   };
   const handleSaveSettings = () => {
-    dispatch({ type: "HANDLE_SAVE", payload: { ...nonSavedSettings } });
+    dispatch({ type: HANDLE_SAVE, payload: { ...nonSavedSettings } });
+    alert("Changes were happily Saved");
   };
   return (
     <div className="settings-container">
@@ -112,10 +106,14 @@ const Settings = () => {
             </div>
           </div>
         </div>
-        <button onClick={resetSettings} className="resetBut cancel">Cancel</button>
-        <button onClick={handleSaveSettings} className="resetBut save">
-          Save
-        </button>
+        <div className="controlChangesSettings">
+          <button onClick={resetSettings} className="resetBut cancel">
+            Cancel
+          </button>
+          <button onClick={handleSaveSettings} className="resetBut save">
+            Save
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,18 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { useRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
-import { ItemTypes } from './ItemTypes.js'
 
+import "./ListItem.css"
 const ListItem = ({moveCard,el,i, id,checkeds, handleCheckSelect, handleEditItem,setQuestActive, setId,checked,index}) => {
     // react dnd
-    
-const style = {
-  border: '1px dashed gray',
-  padding: '0.5rem 1rem',
-  marginBottom: '.5rem',
-  backgroundColor: 'white',
-  cursor: 'move',
-}
+    const ItemTypes = {
+      CARD : "card"
+    }
+
 
   const ref = useRef(null)
   const [{ handlerId }, drop] = useDrop({
@@ -73,7 +69,7 @@ const style = {
   const opacity = isDragging ? 0 : 1
   drag(drop(ref))
   return (
-    <tr key={i} className={`itemTr ${checkeds[el.id] || checked ? "checkedTr" : ""} `}>
+    <tr ref={ref} data-handler-id={handlerId} key={i} className={`itemTr ${checkeds[el.id] || checked ? "checkedTr" : ""} `}>
       <td className="nameTd">
         <div className="flexName">
           <div className="check">
