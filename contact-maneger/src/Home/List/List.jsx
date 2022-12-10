@@ -1,7 +1,13 @@
-import { useState } from "react";
+
+import { NavLink } from "react-router-dom";
+//dnd
+import update from 'immutability-helper'
+import { useCallback, useState } from 'react'
+//
 import InlineChange from "../InlineChange/inlineChange";
 import "./List.css";
 import Card from "../Card/Card";
+import ListItem from "./ListItem/ListItem";
 const List = ({
   inlineEdit,
   checkeds,
@@ -47,6 +53,17 @@ const List = ({
   const handleSelect = (evt) => {
     console.log(evt.target.value);
   };
+  // react dnd
+  const moveCard = useCallback((dragIndex, hoverIndex) => {
+    setCards((prevCards) =>
+      update(prevCards, {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, prevCards[dragIndex]],
+        ],
+      }),
+    )
+  }, []) 
   return (
     <div className="container">
       <div className="box">
@@ -54,28 +71,32 @@ const List = ({
           <button onClick={handleDelete} className="delSelBut">
             Delete
           </button>
-          {search ? <div className="selectSearch">
-            <select
-              onChange={handleSelect}
-              className="propSelect"
-              name=""
-              id=""
-            >
-              <option value="name">Select Property(Name)</option>
-              <option value="name">Name</option>
-              <option value="phone">Phone</option>
-              <option value="email">Email</option>
-              <option value="profession">Profession</option>
-            </select>
-            <input
-              type="text"
-              className="searchInput"
-              autofocus
-              placeholder="Input Text Here"
-            />
-            <button className="searchBut">Search</button>
-          </div> : ""}
-          
+          {search ? (
+            <div className="selectSearch">
+              <select
+                onChange={handleSelect}
+                className="propSelect"
+                name=""
+                id=""
+              >
+                <option value="name">Select Property(Name)</option>
+                <option value="name">Name</option>
+                <option value="phone">Phone</option>
+                <option value="email">Email</option>
+                <option value="profession">Profession</option>
+              </select>
+              <input
+                type="text"
+                className="searchInput"
+                autofocus
+                placeholder="Input Text Here"
+              />
+              <button className="searchBut">Search</button>
+            </div>
+          ) : (
+            ""
+          )}
+
           <button onClick={handleAdd} className="addBut">
             Add
           </button>
@@ -113,146 +134,9 @@ const List = ({
                       contact={currentItem}
                     />
                   ) : !allChecked ? (
-                    <tr
-                      key={i}
-                      className={`itemTr ${
-                        checkeds[el.id] ? "checkedTr" : ""
-                      } `}
-                    >
-                      <td className="nameTd">
-                        <div className="flexName">
-                          <div className="check">
-                            <input
-                              type="checkbox"
-                              id={i}
-                              onClick={() => handleCheckSelect(el.id)}
-                              className="checkbox"
-                            />
-                          </div>
-                          <div className="name">
-                            <div className="img">
-                              <img src={el.avatar} alt="" className="avatar" />
-                            </div>
-                            {el.name}
-                          </div>
-                        </div>
-                      </td>
-                      <td className="emailTd">
-                        <div className="email">{el.email}</div>
-                      </td>
-                      <td className="phoneTd">
-                        <div
-                          className="phone"
-                          style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            padding: "20px 0",
-                          }}
-                        >
-                          {[...el.phone].map((el) => (
-                            <div>{el}</div>
-                          ))}
-                        </div>
-                      </td>
-                      <td className="proffTd">
-                        <div
-                          className="proff"
-                          style={{
-                            backgroundColor:
-                              el.profession === "Web Designer"
-                                ? "rgb(222, 28, 103)"
-                                : "rgb(20, 162, 36)",
-                          }}
-                        >
-                          {el.profession}
-                        </div>
-                      </td>
-                      <td>
-                        <img
-                          className="edit"
-                          id={i}
-                          onClick={() => handleEditItem(el)}
-                          src="https://cdn-icons-png.flaticon.com/512/4007/4007772.png"
-                          alt=""
-                        />
-                        <img
-                          onClick={() => {
-                            setQuestActive(true);
-                            setId(i);
-                          }}
-                          className="remove"
-                          src="https://cdn-icons-png.flaticon.com/512/7263/7263521.png"
-                          alt=""
-                        />
-                      </td>
-                    </tr>
+                    <ListItem moveCard={moveCard} el={el} index={i} checkeds={checkeds} handleCheckSelect={handleCheckSelect} handleEditItem={handleEditItem} setQuestActive={setQuestActive} setId={setId} checked={allChecked}/>
                   ) : (
-                    <tr key={i} className="itemTr checkedTr">
-                      <td className="nameTd">
-                        <div className="flexName">
-                          <div className="check">
-                            <input
-                              type="checkbox"
-                              className="checkbox"
-                              checked
-                            />
-                          </div>
-                          <div className="name">
-                            <div className="img">
-                              <img src={el.avatar} alt="" className="avatar" />
-                            </div>
-                            {el.name}
-                          </div>
-                        </div>
-                      </td>
-                      <td className="emailTd">
-                        <div className="email">{el.email}</div>
-                      </td>
-                      <td className="phoneTd">
-                        <div
-                          className="phone"
-                          style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            padding: "20px 0",
-                          }}
-                        >
-                          <div>{el.phone[0]}</div>
-                          <div>{el.phone[1]}</div>
-                        </div>
-                      </td>
-                      <td className="proffTd">
-                        <div
-                          className="proff"
-                          style={{
-                            backgroundColor:
-                              el.profession === "Web Designer"
-                                ? "rgb(222, 28, 103)"
-                                : "rgb(20, 162, 36)",
-                          }}
-                        >
-                          {el.profession}
-                        </div>
-                      </td>
-                      <td>
-                        <img
-                          className="edit"
-                          id={i}
-                          onClick={() => handleEditItem(el)}
-                          src="https://cdn-icons-png.flaticon.com/512/4007/4007772.png"
-                          alt=""
-                        />
-                        <img
-                          onClick={() => {
-                            setQuestActive(true);
-                            setId(i);
-                          }}
-                          className="remove"
-                          src="https://cdn-icons-png.flaticon.com/512/7263/7263521.png"
-                          alt=""
-                        />
-                      </td>
-                    </tr>
+                    <ListItem moveCard={moveCard} el={el} index={i} checkeds={checkeds} handleCheckSelect={handleCheckSelect} handleEditItem={handleEditItem} setQuestActive={setQuestActive} setId={setId} checked={allChecked}/>
                   );
                 })}
               </tbody>

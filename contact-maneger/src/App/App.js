@@ -8,7 +8,7 @@ import {
   Route,
   Routes
 } from "react-router-dom";
-import { useState } from "react";
+import Contact from "../Contact/Contact"
 import { AppProvider } from "../Context/Context";
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
               <Settings/>
             }
           />
+          <Route path="/contacts/:id" element={<Contact/>}/>
         </Routes>
       </div>
     </BrowserRouter>
