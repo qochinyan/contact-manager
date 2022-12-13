@@ -128,23 +128,25 @@ const List = ({
                     currentItem.id === el.id &&
                     modal.mode == "edit" ? (
                     <InlineChange
+                    key={i}
                       handleContactCancel={handleClose}
                       handleContactChange={handleInputChange}
                       handleContactSave={handleSave}
                       contact={currentItem}
                     />
                   ) : !allChecked ? (
-                    <ListItem  moveCard={moveCard} el={el} index={i} checkeds={checkeds} handleCheckSelect={handleCheckSelect} handleEditItem={handleEditItem} setQuestActive={setQuestActive} setId={setId} checked={allChecked}/>
+                    <ListItem keys={i} moveCard={moveCard} el={el} index={i} checkeds={checkeds} handleCheckSelect={handleCheckSelect} handleEditItem={handleEditItem} setQuestActive={setQuestActive} setId={setId} checked={allChecked}/>
                   ) : (
-                    <ListItem moveCard={moveCard} el={el} index={i} checkeds={checkeds} handleCheckSelect={handleCheckSelect} handleEditItem={handleEditItem} setQuestActive={setQuestActive} setId={setId} checked={allChecked}/>
+                    <ListItem keys={i+1} moveCard={moveCard} el={el} index={i} checkeds={checkeds} handleCheckSelect={handleCheckSelect} handleEditItem={handleEditItem} setQuestActive={setQuestActive} setId={setId} checked={allChecked}/>
                   );
                 })}
               </tbody>
             </table>
           ) : (
             <div className="containerCardView">
-              {list.map((el) => (
+              {list.map((el,i) => (
                 <Card
+                  key={i+2}
                   setId={setId}
                   setQuestActive={setQuestActive}
                   handleEditItem={handleEditItem}
