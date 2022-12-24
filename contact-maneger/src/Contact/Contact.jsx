@@ -20,7 +20,7 @@ const Contact = () => {
                 Name -  <span className="contactNameSpan"> {contact.name}</span> 
             </div>
             <div className="contactPhone">
-              Phone - {Array.isArray(contact.phone) ? "is array ": (
+              Phone - {Array.isArray(contact.phone) ? "is array " : (
                 isObject(contact.phone) ? "is object" : "text"
               )}
             </div>
