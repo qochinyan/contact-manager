@@ -8,7 +8,7 @@ import "./Home.css";
 import List from "../List/List";
 import Quest from "../Quester/Quest";
 import Modal from "../Modal/modal";
-
+import { SERVER_URL as url } from "../../URL/serverUrl";
 function Home() {
   const [id, setId] = useState(0);
   const [myList, setMyList] = useState([]);
@@ -22,11 +22,13 @@ function Home() {
   const settings = useSettings();
   const { inlineEdit, cardView, search } = settings;
   //fetches json-server
-  const url = "http://localhost:3010/list";
   useEffect(() => {
     const getList = () => {
-      axios.get(url).then((data) => setMyList(data.data));
-    };
+      axios.get(`${url}contacts.json`).then((data) =>{
+       const contacts = data.data ? Object.keys(data.data).map(key=>({...data.data[key],id:key})) : []
+       setMyList(contacts)
+    })
+  }
     getList();
   }, []);
 
@@ -41,15 +43,17 @@ function Home() {
     if (modal.mode === "edit") {
       const itemIndex = newList.findIndex((item) => item.id === currentItem.id);
       newList[itemIndex] = currentItem;
+      axios.put(`${url}contacts/${currentItem.id}.json`,currentItem).then((data) => console.log("oki"));
     } else {
       newList.push(currentItem);
-      axios.post(url, currentItem);
+      axios.post(`${url}contacts.json`,currentItem).then((data) => console.log(data));
     }
     setMyList(newList);
     setModal({
       isOpen: false,
       mode: "",
     });
+    
   };
   const handleInputChange = (evt) => {
     const updatedContact = { ...currentItem };
@@ -96,7 +100,7 @@ function Home() {
       if (Object.values(selectedContacts).includes(updatedList[i].id)) {
         currId = updatedList[i].id;
         updatedList.splice(i, 1);
-        axios.delete(`${url}/${currId}`);
+        axios.delete(`${url}/contacts/${currId}.json`);
       }
     }
     setMyList(updatedList);
@@ -112,7 +116,7 @@ function Home() {
         list={myList}
       />
       <List
-      cardView={cardView}
+        cardView={cardView}
         search={search}
         inlineEdit={inlineEdit}
         checkeds={selectedContacts}

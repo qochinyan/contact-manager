@@ -1,13 +1,14 @@
-
 import { NavLink } from "react-router-dom";
 //dnd
-import update from 'immutability-helper'
-import { useCallback, useState } from 'react'
+import update from "immutability-helper";
+import { useCallback, useState } from "react";
+import axios from "axios";
 //
 import InlineChange from "../InlineChange/inlineChange";
 import "./List.css";
 import Card from "../Card/Card";
 import ListItem from "./ListItem/ListItem";
+import { SERVER_URL } from "../../URL/serverUrl";
 const List = ({
   inlineEdit,
   checkeds,
@@ -47,7 +48,9 @@ const List = ({
       avatar:
         "https://e7.pngegg.com/pngimages/36/880/png-clipart-avatar-series-wykop-pl-designer-graphic-artist-designer-face-cartoon.png",
       profession: "",
+      
     });
+    
     setModal({ isOpen: true, mode: "add" });
   };
   const handleSelect = (evt) => {
@@ -61,9 +64,9 @@ const List = ({
           [dragIndex, 1],
           [hoverIndex, 0, prevCards[dragIndex]],
         ],
-      }),
-    )
-  }, []) 
+      })
+    );
+  }, []);
   return (
     <div className="container">
       <div className="box">
@@ -128,25 +131,49 @@ const List = ({
                     currentItem.id === el.id &&
                     modal.mode == "edit" ? (
                     <InlineChange
-                    key={i}
+                      key={i}
                       handleContactCancel={handleClose}
                       handleContactChange={handleInputChange}
                       handleContactSave={handleSave}
                       contact={currentItem}
                     />
                   ) : !allChecked ? (
-                    <ListItem keys={i} moveCard={moveCard} el={el} index={i} checkeds={checkeds} handleCheckSelect={handleCheckSelect} handleEditItem={handleEditItem} setQuestActive={setQuestActive} setId={setId} checked={allChecked}/>
+                    <ListItem
+                      key={el.id}
+                      moveCard={moveCard}
+                      el={el}
+                      index={i}
+                      checkeds={checkeds}
+                      handleCheckSelect={handleCheckSelect}
+                      handleEditItem={handleEditItem}
+                      setQuestActive={setQuestActive}
+                      setId={setId}
+                      checked={allChecked}
+                      i={i}
+                    />
                   ) : (
-                    <ListItem keys={i+1} moveCard={moveCard} el={el} index={i} checkeds={checkeds} handleCheckSelect={handleCheckSelect} handleEditItem={handleEditItem} setQuestActive={setQuestActive} setId={setId} checked={allChecked}/>
+                    <ListItem
+                      key={i + 1}
+                      moveCard={moveCard}
+                      el={el}
+                      index={i}
+                      checkeds={checkeds}
+                      handleCheckSelect={handleCheckSelect}
+                      handleEditItem={handleEditItem}
+                      setQuestActive={setQuestActive}
+                      setId={setId}
+                      checked={allChecked}
+                      i={i}
+                    />
                   );
                 })}
               </tbody>
             </table>
           ) : (
             <div className="containerCardView">
-              {list.map((el,i) => (
+              {list.map((el, i) => (
                 <Card
-                  key={i+2}
+                  key={i + 2}
                   setId={setId}
                   setQuestActive={setQuestActive}
                   handleEditItem={handleEditItem}

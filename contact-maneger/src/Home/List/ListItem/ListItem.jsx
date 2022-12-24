@@ -3,8 +3,10 @@ import { useRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 
 import "./ListItem.css"
-const ListItem = ({keys,moveCard,el,i, id,checkeds, handleCheckSelect, handleEditItem,setQuestActive, setId,checked,index}) => {
-    // react dnd
+const ListItem = ({moveCard,el,i, id,checkeds, handleCheckSelect, handleEditItem,setQuestActive, setId,checked,index}) => {
+    
+  
+  // react dnd
     const ItemTypes = {
       CARD : "card"
     }
@@ -70,7 +72,7 @@ const ListItem = ({keys,moveCard,el,i, id,checkeds, handleCheckSelect, handleEdi
   drag(drop(ref))
   
   return (
-    <tr key={keys} style={{opacity:opacity}} ref={ref} data-handler-id={handlerId} className={`itemTr ${checkeds[el.id] || checked ? "checkedTr" : ""} `}>
+    <tr style={{opacity:opacity}} ref={ref} data-handler-id={handlerId} className={`itemTr ${checkeds[el.id] || checked ? "checkedTr" : ""} `}>
       <td className="nameTd">
         <div className="flexName">
           <div className="check">
@@ -138,7 +140,7 @@ const ListItem = ({keys,moveCard,el,i, id,checkeds, handleCheckSelect, handleEdi
         <img
           onClick={() => {
             setQuestActive(true);
-            setId(i);
+            setId(el.id);
           }}
           className="remove"
           src="https://cdn-icons-png.flaticon.com/512/7263/7263521.png"

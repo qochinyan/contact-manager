@@ -8,7 +8,7 @@ const Contact = () => {
   const { id } = useParams();
   const [contact,setContact] = useState({})
   useEffect(() => {
-    axios.get(`${SERVER_URL}list/${id}`).then((res) => setContact(res.data));
+    axios.get(`${SERVER_URL}contacts.json`).then((res) => setContact(res.data));
   }, []);
   console.log(typeof contact.phone);
 
