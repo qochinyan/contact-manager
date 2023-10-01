@@ -1,0 +1,39 @@
+.contactContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #068ea7af;
+}
+.contactPageItem {
+  width: 60vw;
+  height: 50vh;
+  background: linear-gradient(
+    to right bottom,
+    rgb(238, 255, 0),
+    rgb(32, 255, 12)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  border-radius: 5px 30px;
+}
+.contactName {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  color: rgb(0, 42, 78);
+}
+.contactPageItem h2 {
+  color: rgb(0, 143, 88);
+  font-weight: normal;
+}
+
+.contactNameSpan {
+  color: rgb(0, 146, 102);
+  font-size: 30px;
+  margin: 0 0 0 5px;
+  font-weight: 700;
+}

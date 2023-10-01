@@ -1,0 +1,58 @@
+*{
+    margin: 0 0 0 0;
+}
+.cardItem{
+    width: 14vw;
+    background-color: rgba(255, 255, 255, 0.685);
+    /* height:20vh; */
+    border-radius: 20px;
+    padding: 20px 8px;
+    margin :7px;
+    position: relative;
+}
+.cardTopDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cardName{
+    color: rgb(78, 78, 78);
+}
+.cardNumber{
+    color: rgb(214, 224, 255);
+    background: rgb(0, 97, 177);
+    padding: 0 1%;
+    border-radius: 5px;
+}
+.cardEmail{
+    font-size: 14px;
+    margin-top: 7%;
+    color: rgb(0, 111, 202);
+}
+.cardPhoto img{
+    width: 30%;
+    border-radius: 50%;
+}
+.cardPhoto{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5% 0;
+    width: 100%;
+}
+.cardProff{
+
+    color: rgb(224, 42, 103);
+}
+/*  contol buts */
+.cardContol{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cardEdit,.cardRemove{
+    width: 10%;
+}
+.cardCheckbox{
+    margin:0 0 3% 0;
+}
